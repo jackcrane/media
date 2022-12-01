@@ -5,6 +5,21 @@ const soh = ({ children }) => {
   return <span className="soh">{children}</span>;
 };
 
+const useScrollPosition = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      setScrollPosition(window.pageYOffset);
+    };
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
+
+  return scrollPosition;
+};
+
 const platforms = {
   // Dollars Per GB per hour
   netflix: {
@@ -57,8 +72,17 @@ function App() {
     setResult(totalCost);
   }, [hours, platform]);
 
+  const scrollPosition = useScrollPosition();
+
   return (
     <div className="body">
+      <style>
+        {`
+          :root {
+            --scroll: ${scrollPosition};
+          }
+        `}
+      </style>
       <header className="header">
         <div className="titleblock">
           <h2 className="wiy">What is your</h2>

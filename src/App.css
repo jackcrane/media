@@ -65,6 +65,7 @@
   font-size: 40px;
   text-align: center;
   margin: 20px 0px;
+  margin-bottom: 100px;
   transition: color 0.1s;
 }
 .result.altered {
@@ -72,7 +73,7 @@
 }
 .notes {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 .notes .note {
   color: var(--col-lt-gray);
@@ -84,7 +85,7 @@
   color: var(--col-white);
   opacity: 0.6;
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - clamp(0px, calc(var(--scroll) * 0.3px), 60px)));
   font-size: 80px;
   top: 0px;
   transition: opacity 0.1s;
