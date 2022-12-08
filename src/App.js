@@ -231,6 +231,20 @@ function App() {
           >
             paper
           </a>{" "}
+          ,{" "}
+          <a
+            className="link"
+            href="https://docs.google.com/presentation/d/18DHuQMZnCf0PHo6iOfMAsHAWBt_jLDbXMA2TWIHGMPc/edit?usp=sharing"
+          >
+            presentation
+          </a>
+          , and{" "}
+          <a
+            href="https://docs.google.com/document/d/1ptb5_jVohi_igcXJ74NTv-ldLuiMUyt9sOv_efKRq8U/edit?usp=sharing"
+            className="link"
+          >
+            process essay
+          </a>{" "}
           for more information.
         </p>
       </div>
