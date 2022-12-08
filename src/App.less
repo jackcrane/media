@@ -13,12 +13,22 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 50px;
+  @media screen and (max-width: 750px) {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
 
 .body {
   background-color: var(--col-black);
   min-height: 100vh;
   padding: 50px 100px;
+  @media screen and (max-width: 750px) {
+    padding: 40px 50px;
+  }
+  @media screen and (max-width: 530px) {
+    padding: 40px 20px;
+  }
 }
 
 .wiy {
@@ -68,6 +78,13 @@
   max-width: 600px;
   margin: auto;
   justify-content: space-evenly;
+  @media screen and (max-width: 530px) {
+    flex-direction: column;
+    gap: 20px;
+    * {
+      width: 100%;
+    }
+  }
 }
 
 .result {
@@ -77,14 +94,29 @@
   margin: 20px 0px;
   margin-bottom: 100px;
   transition: color 0.1s;
-  &.altered {
+  .altered {
     color: var(--col-orange);
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  h1 {
+    line-height: 0.7;
+    margin: 0px;
+  }
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
   }
 }
 
 .notes {
   position: relative;
   margin-bottom: 100px;
+  @media screen and (max-width: 530px) {
+    margin-bottom: 120px;
+  }
   .note {
     color: var(--col-lt-gray);
     margin: 0px;
@@ -99,8 +131,21 @@
       calc(-100% - clamp(0px, calc(var(--scroll) * 0.3px), 60px))
     );
     font-size: 80px;
+    @media screen and (max-width: 900px) {
+      font-size: 60px;
+      transform: translateY(
+        calc(-100% - clamp(0px, calc(var(--scroll) * 0.3px), 45px))
+      );
+    }
+    @media screen and (max-width: 630px) {
+      font-size: 50px;
+      transform: translateY(
+        calc(-100% - clamp(0px, calc(var(--scroll) * 0.3px), 35px))
+      );
+    }
     top: 0px;
     transition: opacity 0.1s;
+    pointer-events: none;
   }
   &:hover {
     .title {
@@ -113,5 +158,30 @@
   display: none;
   &:hover {
     display: initial;
+  }
+}
+
+.link {
+  color: var(--col-orange);
+  text-decoration: none;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 0px;
+    right: 0px;
+    height: 8px;
+    width: 100%;
+    background-color: var(--col-orange);
+    opacity: 0.1;
+    transition: 0.4s;
+  }
+  &:hover {
+    &::after {
+      opacity: 0.8;
+      height: 12px;
+      bottom: 6px;
+    }
   }
 }

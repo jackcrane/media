@@ -1,8 +1,12 @@
-import styles from "./App.css";
 import { useEffect, useState } from "react";
+import styles from "./App.css"; // Not actually unused; DO NOT REMOVE
 
-const soh = ({ children }) => {
-  return <span className="soh">{children}</span>;
+const As = ({ children }) => {
+  return (
+    <a className="link" href={children}>
+      {children}
+    </a>
+  );
 };
 
 const useScrollPosition = () => {
@@ -53,7 +57,8 @@ const platforms = {
 };
 
 const calculateCost = (result, platform) => {
-  if (!result || !platform) return "";
+  console.log({ result, platform });
+  if (!result || !platform || platform === "select") return "";
   const platformInfo = platforms[platform];
   const storageCost = platformInfo.storage * result * platformInfo.usage;
   const bandwidthCost = platformInfo.bandwidth * result * platformInfo.usage;
@@ -121,11 +126,15 @@ function App() {
             </select>
           </div>
         </div>
-        <div className={result === "" ? "result" : "result altered"}>
-          <h1>{result === "" ? "$___" : `$${result}`}</h1>
+        <div className="result">
+          <h1>{result !== "" ? `${platform} spent ` : ""}</h1>
+          <div className={result === "" ? "_result" : "_result altered"}>
+            <h1>{result === "" ? "$___" : `$${result}`}</h1>
+          </div>
+          <h1>{result !== "" ? ` on you` : ""}</h1>
         </div>
       </div>
-      <div className="notes">
+      <div className="notes" onClick={() => {}}>
         <p className="note">
           use your phone's "screen time" feature to learn how much time you
           spend on an app. Enter the number of hours above, then select the
@@ -135,7 +144,7 @@ function App() {
         </p>
         <h3 className="title">How to use</h3>
       </div>
-      <div className="notes">
+      <div className="notes" onClick={() => {}}>
         <p className="note">
           Running a social media platform is extremely expensive, and we are
           playing into their motives. Social media companies are for-profit
@@ -149,7 +158,18 @@ function App() {
         </p>
         <h3 className="title">Why you should care</h3>
       </div>
-      <div className="notes">
+      <div className="notes" onClick={() => {}}>
+        <p className="note">
+          It is remarkably well documented that the huge use of social media has
+          a massive impact on our mental health. Our huge connection to social
+          media has both positives and negatives, mentally, socially, and
+          technologically. I write about the social and technological impacts in
+          my essay linked in the footer, but it is critical to not underestimate
+          the impacts on your mental health and social stability.
+        </p>
+        <h3 className="title">Media & mental health</h3>
+      </div>
+      <div className="notes" onClick={() => {}}>
         <p className="note">
           I have researched tech stacks and costs for the major social media
           companies, and have broken that down into an hourly rate. A breakdown
@@ -157,7 +177,7 @@ function App() {
         </p>
         <h3 className="title">How it works</h3>
       </div>
-      <div className="notes">
+      <div className="notes" onClick={() => {}}>
         <p className="note">
           Most of the data in this app is based on leaks, expert opinions, and
           industry trends. It is important to understand that, while based in
@@ -171,11 +191,47 @@ function App() {
         </p>
         <h3 className="title">A note on error</h3>
       </div>
-      <div className="notes">
+      <div className="notes" onClick={() => {}}>
         <h3 className="title">Citations</h3>
         <p className="note">
-          Netflix Tech Blog [https://netflixtechblog.com/], Wired Magazine
-          [https://www.wired.com/story/youtube-slashes-video-quality-save-bandwidth/]
+          Netflix Tech Blog [<As>https://netflixtechblog.com/</As>], Wired
+          Magazine [
+          <As>
+            https://www.wired.com/story/youtube-slashes-video-quality-save-bandwidth/
+          </As>
+          ], Levels [<As>https://levels.fyi</As>], TikTok Engineering Blog [
+          <As>https://careers.tiktok.com/blog</As>], Financial Post [
+          <As>
+            https://financialpost.com/technology/how-much-does-bandwidth-actually-cost
+          </As>
+          ], Google Blog [
+          <As>
+            https://blog.google/inside-google/company-announcements/investing-america-2022
+          </As>
+          ], Creator Kit [
+          <As>https://creatorkit.com/blog/video-length-guide/</As>]
+        </p>
+      </div>
+      <hr />
+      <div className="notes">
+        <p className="note">
+          An app built by{" "}
+          <a className="link" href="https://jackcrane.rocks">
+            Jack Crane
+          </a>{" "}
+          for Dr. Rayner's ENG 1900 class at Saint Louis University. Data and{" "}
+          <a className="link" href="https://github.com/jackcrane/media">
+            source code
+          </a>{" "}
+          are under a GNU GPL v3 license. Read the accompanying{" "}
+          <a
+            className="link"
+            href="https://docs.google.com/document/d/1t0kK5mdKNxpc8d8GmIhqrbKZSNRIyP0BCIk_7EJsa1Q/edit?usp=sharing"
+            target="_blank"
+          >
+            paper
+          </a>{" "}
+          for more information.
         </p>
       </div>
     </div>
