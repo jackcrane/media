@@ -108,7 +108,7 @@ function App() {
             <input
               className="input"
               type="number"
-              placeholder="Enter your screen time"
+              placeholder="[hours] Enter your screen time"
               onInput={(e) => setHours(e.target.value)}
             />
           </div>
